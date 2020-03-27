@@ -1,0 +1,32 @@
+<h2>Section 5</h2>
+
+<ngb-tabset>
+  <ngb-tab title="Like">
+    <ng-template ngbTabContent>
+      <app-like [likesCount]="tweet.likesCount"></app-like>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Panel">
+    <ng-template ngbTabContent>
+      <app-panel>
+        <ng-container class="header">
+          Heading
+        </ng-container>
+        <ng-container class="body">
+          <h5 class="card-title">Title</h5>
+          <p class="card-text">Some content...</p>
+        </ng-container>
+        <ng-container class="footer">
+          <app-favorite
+            [isSelected]="post.isFavorite"
+            (favoriteEvent)="onFavoriteChanged($event)">
+          </app-favorite>
+          <app-like
+            [likesCount]="tweet.likesCount"
+            [isActive]="tweet.isLiked">
+          </app-like>
+        </ng-container>
+      </app-panel>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>

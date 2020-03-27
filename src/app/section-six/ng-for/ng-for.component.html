@@ -1,0 +1,43 @@
+<h3>*ngFor</h3>
+<h4>Safe Traversal Operator</h4>
+<span>{{ task.assignee?.name }}</span>
+
+<h4>TrackBy</h4>
+<button
+  class="btn btn-outline-primary"
+  (click)="loadCourses()">Load Courses</button>
+<ul>
+  <li *ngFor="let course of courses; trackBy: trackCourse">
+    {{ course.name }}
+    <button
+      class="btn btn-outline-primary"
+      (click)="onRemove(course)">Remove</button>
+  </li>
+</ul>
+
+<h4>Change Detection</h4>
+<button
+  class="btn btn-outline-primary"
+  (click)="onAdd()">Add</button>
+<ul>
+  <li *ngFor="let course of courses">
+    {{ course.name }}
+    <button
+      class="btn btn-outline-primary"
+      (click)="onRemove(course)">Remove</button>
+  </li>
+</ul>
+
+<h4>Even</h4>
+<ul>
+  <li *ngFor="let course of courses; even as isEven">
+    {{ course.name }} <span *ngIf="isEven">(EVEN)</span>
+  </li>
+</ul>
+
+<h4>Index</h4>
+<ul>
+  <li *ngFor="let course of courses; index as i">
+    {{ i }} - {{ course.name }}
+  </li>
+</ul>

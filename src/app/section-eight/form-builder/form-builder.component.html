@@ -1,0 +1,49 @@
+<form [formGroup]="form">
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input
+      formControlName="name"
+      id="name"
+      type="text"
+      class="form-control">
+    <div class="invalid-feedback">
+      <p *ngIf="name.hasError('required')">
+        Name is required.
+      </p>
+    </div>
+  </div>
+
+  <div formGroupName="contact">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input
+        formControlName="email"
+        id="email"
+        type="email"
+        class="form-control">
+      <div class="invalid-feedback">
+        <p *ngIf="phone.hasError('required')">
+          A valid email is required.
+        </p>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">Phone</label>
+      <input
+        formControlName="phone"
+        id="phone"
+        type="tel"
+        class="form-control">
+      <div class="invalid-feedback">
+        <p *ngIf="phone.hasError('required')">
+          Phone is required.
+        </p>
+      </div>
+    </div>
+  </div>
+  <button class="btn btn-outline-primary" [disabled]="form.invalid">
+    Submit
+  </button>
+</form>
+

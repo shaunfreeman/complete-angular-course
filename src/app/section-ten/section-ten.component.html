@@ -1,0 +1,19 @@
+<h2>Section Ten</h2>
+
+<ngb-tabset>
+  <ngb-tab title="Github Profile">
+    <ng-template ngbTabContent>
+      <app-github-profile></app-github-profile>
+    </ng-template>
+  </ngb-tab>
+  <ngb-tab title="Archive" >
+    <ng-template ngbTabContent>
+      <ul>
+        <li *ngFor="let post of archive">
+          <a [routerLink]="['archive', post.year, post.month]">{{ post.year }}/{{ post.month }}</a>
+        </li>
+      </ul>
+    </ng-template>
+  </ngb-tab>
+</ngb-tabset>
+

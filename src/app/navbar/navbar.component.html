@@ -1,0 +1,66 @@
+<nav class="navbar fixed-top navbar-expand-lg  navbar-light bg-light">
+  <button class="navbar-toggler"
+          type="button"
+          aria-controls="topNavbar"
+          [attr.aria-expanded]="!collapsed"
+          (click)="collapsed = !collapsed">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div  class="collapse navbar-collapse"
+        [class.collapse]="collapsed"
+        id="topNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="/"><i class="fa fa-home"></i></a>
+      </li>
+      <li class="nav-item" ngbDropdown>
+        <a class="nav-link" ngbDropdownToggle id="courseSections" role="button">
+          Course Sections
+        </a>
+        <div ngbDropdownMenu aria-labelledby="courseSections" class="dropdown-menu">
+          <a ngbDropdownItem routerLink="section-three" routerLinkActive="active">Section 3</a>
+          <a ngbDropdownItem routerLink="section-four" routerLinkActive="active">Section 4</a>
+          <a ngbDropdownItem routerLink="section-five" routerLinkActive="active">Section 5</a>
+          <a ngbDropdownItem routerLink="section-six" routerLinkActive="active">Section 6</a>
+          <a ngbDropdownItem routerLink="section-seven" routerLinkActive="active">Section 7</a>
+          <a ngbDropdownItem routerLink="section-eight" routerLinkActive="active">Section 8</a>
+          <a ngbDropdownItem routerLink="section-nine" routerLinkActive="active">Section 9</a>
+          <a ngbDropdownItem routerLink="section-ten" routerLinkActive="active">Section 10</a>
+        </div>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link"
+           routerLink="section-nine/followers"
+           [queryParams]="{ page: 1, order: 'newest' }">Followers</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active">
+        <a class="nav-link" routerLink="section-nine/posts">Posts</a>
+      </li>
+      <li *ngIf="auth.isLoggedIn() && auth.currentUser.admin"
+          class="nav-item"
+          routerLinkActive="active">
+        <a class="nav-link" routerLink="admin">Admin</a>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav ml-auto ">
+      <li *ngIf="!auth.isLoggedIn()"
+          class="nav-item"
+          routerLinkActive="active">
+        <a class="nav-link" routerLink="auth/login">
+          <span class="fa fa-sign-in"></span> Login
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="auth.isLoggedIn()">
+        <a class="nav-link" routerLink="/">
+          <span class="fa fa-user"></span> {{ auth.currentUser.name }}</a>
+      </li>
+      <li *ngIf="auth.isLoggedIn()"
+          class="nav-item">
+        <a class="nav-link" (click)="logout()">
+          <span class="fa fa-sign-out"></span> Logout
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>

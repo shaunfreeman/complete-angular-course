@@ -1,0 +1,18 @@
+<div class="card">
+  <div class="card-header zippy" (click)="toggle()">
+    <h5 class="float-left">
+      {{ title }}
+    </h5>
+    <span class="float-right">
+      <i
+        class="fa"
+        [ngClass]="{
+          'fa-angle-down': !isExpanded,
+          'fa-angle-up': isExpanded
+        }"></i>
+    </span>
+  </div>
+  <div class="card-body" *ngIf="isExpanded">
+    <ng-content></ng-content>
+  </div>
+</div>

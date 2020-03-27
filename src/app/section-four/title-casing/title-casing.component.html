@@ -1,0 +1,7 @@
+<div class="form-group">
+  <label for="title">Title</label>
+  <input [(ngModel)]="title" id="title" class="form-control">
+  <div>
+    <p class="text-primary">{{ title | properTitleCase }}</p>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+
+<form #f="ngForm" (ngSubmit)="submit(f)">
+  <div ngModelGroup="contact" #contact="ngModelGroup">
+    <div *ngIf="contact.errors">...</div>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input
+        required
+        minlength="3"
+        ngModel
+        name="firstName"
+        #firstName="ngModel"
+        (change)="log(firstName)"
+        id="firstName"
+        type="text"
+        class="form-control">
+      <div class="invalid-feedback">
+        <p *ngIf="firstName.errors?.required">
+          Please provide a first name.
+        </p>
+        <p *ngIf="firstName.errors?.minlength">
+          Minimum {{ firstName.errors.minlength.requiredLength }} characters.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="comment">Comment</label>
+    <textarea
+      ngModel
+      name="comment"
+      id="comment"
+      cols="30" r
+      rows="10"
+      class="form-control">
+    </textarea>
+  </div>
+  <div class="custom-control custom-checkbox">
+    <input class="custom-control-input" type="checkbox" ngModel name="isSubscribed" id="isSubscribed">
+    <label class="custom-control-label" for="isSubscribed">
+      Subscribe to mailing list.
+    </label>
+  </div>
+  <div class="form-group">
+    <label for="contactMethod">Contact Method</label>
+    <select ngModel name="contactMethod" class="custom-select" id="contactMethod">
+      <option value="">Choose...</option>
+      <option *ngFor="let method of contactMethods" [ngValue]="method.id">
+        {{ method.name }}
+      </option>
+    </select>
+  </div>
+  <div *ngFor="let method of contactMethods" class="custom-control custom-radio">
+    <input ngModel type="radio" id="contactMethod{{method.id}}" name="contactMethod2" class="custom-control-input" [value]="method.id">
+    <label class="custom-control-label" for="contactMethod{{method.id}}">
+      {{ method.name }}
+    </label>
+  </div>
+  <p>
+    {{ f.value | json }}
+  </p>
+  <button
+    class="btn btn-outline-primary"
+    [disabled]="!f.valid">
+    Submit
+  </button>
+</form>

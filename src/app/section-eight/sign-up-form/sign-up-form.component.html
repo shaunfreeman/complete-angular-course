@@ -1,0 +1,47 @@
+
+<form [formGroup]="form" (ngSubmit)="login()">
+  <div *ngIf="form.errors" class="alert alert-danger">
+    The username or password is invalid.
+  </div>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input
+      formControlName="username"
+      id="username"
+      type="text"
+      class="form-control">
+    <div *ngIf="username.pending"><i class="fas fa-spinner fa-spin"></i></div>
+    <div class="invalid-feedback">
+      <p *ngIf="username.hasError('required')">
+        Username is required.
+      </p>
+      <p *ngIf="username.hasError('minlength')">
+        Username should be a minimum of
+        {{ username.getError('minlength').requiredLength }}
+        characters.
+      </p>
+      <p *ngIf="username.hasError('cannotContainSpace')">
+        Username cannot contain spaces.
+      </p>
+      <p *ngIf="username.hasError('shouldBeUnique')">
+        Username is already taken.
+      </p>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      formControlName="password"
+      id="password"
+      type="password"
+      class="form-control">
+    <div class="invalid-feedback">
+      <p *ngIf="password.hasError('required')">
+        Password is required.
+      </p>
+    </div>
+  </div>
+  <button class="btn btn-outline-primary" [disabled]="form.invalid">
+    Sign Up
+  </button>
+</form>
