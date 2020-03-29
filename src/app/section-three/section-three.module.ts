@@ -8,6 +8,7 @@ import { SectionThreeComponent } from './section-three.component';
 import { CoursesComponent } from './courses/courses.component';
 import { CourseComponent } from './course/course.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxMdModule } from 'ngx-md';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     CommonModule,
     SectionThreeRoutingModule,
-    NgbModule
+    NgbModule,
+    NgxMdModule
   ],
   providers: [
     AuthorsService,

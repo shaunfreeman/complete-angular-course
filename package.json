@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy:gh": "ng build --prod --base-href='https://shaunfreeman.github.io/complete-angular-course' && sudo ngh"
+    "deploy:gh": "ng build --prod --base-href='/complete-angular-course/' && sudo ngh"
   },
   "private": true,
   "dependencies": {
@@ -25,6 +25,8 @@
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@ng-bootstrap/ng-bootstrap": "^6.0.2",
     "bootstrap": "^4.4.1",
+    "ngx-md": "^8.1.6",
+    "prismjs": "^1.19.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

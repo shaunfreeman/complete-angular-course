@@ -1,3 +1,8 @@
+import 'prismjs/prism';
+import 'prismjs/components/prism-scss';
+import 'prismjs/components/prism-typescript';
+import 'prismjs/plugins/line-numbers/prism-line-numbers.js';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 
@@ -24,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { JwtModule } from '@auth0/angular-jwt';
 import { tokenGetter } from './auth/auth.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxMdModule } from 'ngx-md';
+import { GithubCodeService } from './services/github-code.service';
 
 @NgModule({
   declarations: [
@@ -36,6 +43,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgxMdModule.forRoot(),
     JwtModule.forRoot({
       config: { tokenGetter }
     }),
@@ -54,6 +62,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   providers: [
     OrderService,
+    GithubCodeService,
     { provide: ErrorHandler, useClass: AppErrorHandler },
 
     // For creating a mock back-end. You don't need these in a real app.
