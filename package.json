@@ -26,7 +26,7 @@
     "@ng-bootstrap/ng-bootstrap": "^6.0.2",
     "bootstrap": "^4.4.1",
     "ngx-md": "^8.1.6",
-    "prismjs": "^1.19.0",
+    "prismjs": "^1.21.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
